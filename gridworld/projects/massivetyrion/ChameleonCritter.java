@@ -20,6 +20,7 @@ import info.gridworld.actor.Actor;
 import info.gridworld.actor.Critter;
 import info.gridworld.grid.Location;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 /**
@@ -36,8 +37,17 @@ public class ChameleonCritter extends Critter
     public void processActors(ArrayList<Actor> actors)
     {
         int n = actors.size();
-        if (n == 0)
-            return;
+        if (n == 0){
+	    //            return;
+	    //Code taken from the Flower class
+	    Color c = getColor();
+	    int red = (int) (c.getRed() * (1 - .05));
+	    int green = (int) (c.getGreen() * (1 - .05));
+	    int blue = (int) (c.getBlue() * (1 - .05));
+	    
+	    setColor(new Color(red, green, blue));
+	    return;
+	}
         int r = (int) (Math.random() * n);
 
         Actor other = actors.get(r);
